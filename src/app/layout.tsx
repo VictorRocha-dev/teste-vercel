@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "mercado imobiliário",
   ],
   icons: {
-    icon: "/favicon.svg", // Ou use "/favicon.png" se preferir
+    icon: "/favicon.svg",
   },
 };
 
