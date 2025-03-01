@@ -23,10 +23,10 @@ export async function generateMetadata({
     const property = await res.json();
 
     return {
-      title: `${property.titulo} - ${property.localizacao} | AcheLar`,
+      title: `${property.titleSite} | AcheLar`,
       description: property.descricao,
       openGraph: {
-        title: `${property.titulo} - ${property.localizacao}`,
+        title: `${property.titleSite}`,
         description: property.descricao,
         url: `https://www.seusite.com.br/imovel/${id}`,
         images: [
