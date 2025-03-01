@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import Image from "next/image";
 
-// 🏗️ Função para gerar metadados dinâmicos (SEO)
 export async function generateMetadata({
   params,
 }: {
@@ -57,7 +56,6 @@ export async function generateMetadata({
   }
 }
 
-// 🏠 Página dinâmica do imóvel
 export default async function ImovelPage({
   params,
 }: {
@@ -83,37 +81,16 @@ export default async function ImovelPage({
       <div className="p-6">
         <h1 className="text-2xl font-bold">{property.titulo}</h1>
         <p className="text-gray-600">{property.descricao}</p>
+        <p className="text-gray-600">{property.localizacao}</p>
+
+        <p className="text-gray-600">R$ {property.preco.toFixed(2)}</p>
+
         <Image
           src={property.imagem}
           alt="Imagem do imóvel"
           width={600}
           height={400}
           className="mt-4 block max-w-lg rounded-lg shadow-lg"
-        />
-
-        {/* 🔥 JSON-LD para SEO (Google) */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Apartment",
-              name: property.titulo,
-              description: property.descricao,
-              image: `https://www.seusite.com.br${property.imagem}`,
-              url: `https://www.seusite.com.br/imovel/${id}`,
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: property.localizacao,
-                addressCountry: "BR",
-              },
-              offers: {
-                "@type": "Offer",
-                price: property.preco || "Sob consulta",
-                priceCurrency: "BRL",
-              },
-            }),
-          }}
         />
       </div>
     );
